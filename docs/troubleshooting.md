@@ -7,7 +7,7 @@ Use the current release package. On first run, the app should create `config.jso
 If it still closes, run from PowerShell:
 
 ```powershell
-.\feishu_voice_bridge.exe
+.\DouBaoVoiceBridge.exe
 ```
 
 ## `lark-cli` Not Found
@@ -54,4 +54,3 @@ If you want looser matching, adjust:
 ```
 
 Use `any` only if you accept the risk of pasting into the wrong foreground window.
-

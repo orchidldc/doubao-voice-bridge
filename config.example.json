@@ -8,11 +8,13 @@
   "min_chars_to_paste": 1,
   "trim_trailing_whitespace_for_delta": true,
   "append_tolerance_chars": 2,
+  "leading_newline_policy": "smart",
+  "leading_newline_idle_threshold_seconds": 2.0,
   "monitor_after_marker": "",
   "insert_mode": "clipboard",
   "restore_clipboard": true,
-  "target_window_mode": "locked",
-  "require_same_foreground_window": true,
+  "target_window_mode": "any",
+  "require_same_foreground_window": false,
   "require_same_focused_control": false,
   "allow_refocus_target_window": false,
   "log_level": "INFO",
@@ -23,4 +25,3 @@
     "quit": "F12"
   }
 }
-

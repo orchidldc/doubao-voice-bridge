@@ -1,6 +1,6 @@
 # Privacy Notice
 
-This tool is a local Windows utility.
+DouBao Voice Bridge is a local Windows utility.
 
 ## Data Access
 
@@ -29,4 +29,3 @@ You are responsible for:
 - selecting the correct Windows input target,
 - protecting credentials and local config files,
 - complying with your organization's Feishu/Lark and data handling policies.
-

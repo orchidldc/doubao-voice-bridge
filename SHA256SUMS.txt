@@ -1,2 +1,2 @@
-﻿a0a2dc130a4058773a741e6d83c8c01815a640559472a462faabc213d5863a42  FeishuVoiceBridge-v0.1.0-windows-x64.zip
-deeeadc7f9a57a1923fed716049ceebf3fc7070ac35d1af5207db20b6517e4a5  feishu_voice_bridge.exe
+a33216ddd94874900b426b1034b62f442648064a84dce654c92930cfadf74b5d  DouBaoVoiceBridge-v0.2.0-windows-x64.zip
+1b391c57891ebd644cc32a219d0c64a3854ac230457c008a32ca9306f9ff186c  DouBaoVoiceBridge.exe

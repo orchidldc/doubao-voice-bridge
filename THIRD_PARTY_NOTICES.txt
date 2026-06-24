@@ -1,7 +1,7 @@
 Third-Party Notices
 ===================
 
-This release may include or depend on third-party Python packages and the PyInstaller bootloader. Third-party components retain their own licenses.
+DouBao Voice Bridge may include or depend on third-party Python packages and the PyInstaller bootloader. Third-party components retain their own licenses.
 
 Direct runtime dependencies:
 
@@ -28,4 +28,3 @@ Build and packaging components:
 - pyinstaller-hooks-contrib: Apache License 2.0
 
 This notice is provided for attribution and compliance tracking. If your organization requires a full legal review, verify the exact package versions and license texts from the installed environment used to build the release.
-

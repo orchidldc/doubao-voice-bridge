@@ -11,42 +11,33 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 
 ## 2. Prepare Config
 
-Extract the release zip, then copy:
+Extract the release zip, then start the GUI:
 
 ```powershell
-Copy-Item config.example.json config.json
+.\DouBaoVoiceBridge.exe
 ```
 
-Edit `config.json`:
+Fill in your Feishu/Lark Docx URL in the GUI and click "Save config". The saved private config file is named:
 
-```json
-{
-  "auth_mode": "lark_cli",
-  "doc_url": "https://xxx.feishu.cn/docx/xxxxxxxx"
-}
+```text
+doubao_voice_bridge_config.json
 ```
 
-Use your own Docx link. Do not commit this file.
+Do not commit or publish this file.
 
 ## 3. Run
 
 Double-click:
 
 ```text
-feishu_voice_bridge.exe
-```
-
-Or run:
-
-```powershell
-.\start.bat
+DouBaoVoiceBridge.exe
 ```
 
 ## 4. Use
 
+- Click "Start listening".
 - Put the cursor in the target input field.
-- Press `F8` to start and capture the baseline.
+- Press `F8` to capture the baseline.
 - Continue writing into the configured Feishu/Lark document from your phone.
 - New appended text will be pasted into the target input field.
 - Press `F9` to pause, `F10` to reset, `F12` to exit.
-
