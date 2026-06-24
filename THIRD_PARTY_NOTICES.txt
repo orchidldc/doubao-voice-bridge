@@ -1,0 +1,31 @@
+Third-Party Notices
+===================
+
+This release may include or depend on third-party Python packages and the PyInstaller bootloader. Third-party components retain their own licenses.
+
+Direct runtime dependencies:
+
+- requests: Apache License 2.0
+- pyperclip: BSD-style license
+- pywin32: Python Software Foundation License
+- keyboard: MIT License
+
+Common transitive/runtime dependencies:
+
+- charset-normalizer: MIT License
+- idna: BSD License
+- urllib3: MIT License
+- certifi: Mozilla Public License 2.0
+
+Build and packaging components:
+
+- PyInstaller: GPL v2-or-later with the PyInstaller bootloader exception
+- altgraph: MIT License
+- pefile: MIT License
+- pywin32-ctypes: BSD 3-Clause License
+- setuptools: MIT License
+- packaging: Apache License 2.0 or BSD 2-Clause License
+- pyinstaller-hooks-contrib: Apache License 2.0
+
+This notice is provided for attribution and compliance tracking. If your organization requires a full legal review, verify the exact package versions and license texts from the installed environment used to build the release.
+

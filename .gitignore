@@ -1,0 +1,34 @@
+# Private local configuration
+config.json
+.env
+.env.*
+!/.env.example
+
+# Runtime and debug output
+*.log
+logs/
+tmp/
+temp/
+
+# Build/source artifacts intentionally excluded from this public docs repo
+src/
+work/
+build/
+dist/
+__pycache__/
+*.py
+*.pyc
+*.spec
+
+# Release archives are uploaded to GitHub Releases, not committed here
+*.exe
+*.zip
+*.7z
+*.msi
+
+# Local OS/editor files
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
