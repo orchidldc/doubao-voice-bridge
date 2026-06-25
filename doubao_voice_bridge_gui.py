@@ -270,6 +270,7 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
             "allow_refocus_target_window": False,
             "log_level": "INFO",
             "auto_start_watch": True,
+            "auto_begin_on_watch": True,
             "hotkeys": {"start": "F8", "stop": "F9", "reset_baseline": "F10", "quit": "F12"},
         }
 
@@ -320,6 +321,7 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
         config["monitor_after_marker"] = self.marker_var.get()
         config["leading_newline_policy"] = "smart"
         config["auto_start_watch"] = bool(self.auto_start_var.get())
+        config["auto_begin_on_watch"] = True
 
         try:
             config["poll_interval_seconds"] = max(0.2, float(self.poll_interval_var.get()))
@@ -417,7 +419,7 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
             self._set_last_action("启动监听失败")
             return
         self.status_var.set("运行中")
-        self._set_last_action("桥接监听已启动，请把光标放到目标输入框后按 F8")
+        self._set_last_action("桥接监听已启动，已自动执行一次 F8")
         self._set_buttons_running(True)
         self._log(f"监听已启动：{' '.join(command)}")
         self.reader = threading.Thread(target=self._stream_process_output, args=(self.process, True), daemon=True)

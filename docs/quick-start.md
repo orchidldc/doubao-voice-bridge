@@ -37,7 +37,7 @@ DouBaoVoiceBridge.exe
 
 - Listening starts automatically by default. If you stopped it manually, click "Start listening".
 - Put the cursor in the target input field.
-- Press `F8` to capture the baseline.
+- The app captures the initial baseline automatically. Press `F8` only when you want to start again and capture a new baseline.
 - Continue writing into the configured Feishu/Lark document from your phone.
 - New appended text will be pasted into the target input field.
 - Press `F9` to pause, `F10` to reset, `F12` to exit.

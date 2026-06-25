@@ -26,8 +26,8 @@ The app uses a Feishu/Lark Docx document as a local bridge:
 2. Use DouBao or any mobile dictation/input method to write text into that document.
 3. Run DouBao Voice Bridge on Windows.
 4. Put the cursor in the target input field.
-5. Press `F8` to capture the baseline.
-6. The app pastes only text appended after `F8`.
+5. The app captures the startup baseline automatically.
+6. The app pastes only text appended after startup or after the next `F8`.
 
 It does not perform speech recognition, call DouBao APIs, scrape browser DOM, take screenshots, or upload local data.
 
@@ -45,7 +45,7 @@ Since `v0.2.0`, the main program is a GUI app:
 - open config,
 - open logs.
 
-The underlying bridge CLI is embedded in the GUI binary resources, so users do not need to manage multiple executables. The current GUI starts the bridge process automatically on launch and cleans up its background bridge process tree when the GUI closes.
+The underlying bridge CLI is embedded in the GUI binary resources, so users do not need to manage multiple executables. The current GUI starts the bridge process automatically on launch, captures the initial baseline automatically, and cleans up its background bridge process tree when the GUI closes.
 
 ## Quick Start
 
@@ -61,9 +61,9 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 
 5. Click "Save config".
 6. Click "Check connection".
-7. Listening starts automatically by default. If you stopped it manually, click "Start listening".
+7. Listening starts automatically by default and captures the initial baseline automatically. If you stopped it manually, click "Start listening".
 8. Put the cursor in the target input field.
-9. Press `F8` to capture the baseline.
+9. Press `F8` only when you want to start again and capture a new baseline.
 10. Continue writing into the Feishu/Lark document from your phone.
 
 ## Hotkeys

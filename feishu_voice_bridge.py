@@ -100,6 +100,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "allow_refocus_target_window": False,
     "log_level": "INFO",
     "auto_start_watch": True,
+    "auto_begin_on_watch": True,
     "hotkeys": {
         "start": "F8",
         "stop": "F9",
@@ -1628,6 +1629,11 @@ def run_watch(config: dict[str, Any]) -> int:
     hotkeys_ok = register_hotkeys(bridge, config.get("hotkeys", {}) if isinstance(config.get("hotkeys"), dict) else {})
     if not hotkeys_ok:
         start_console_command_thread(bridge)
+    if bool(config.get("auto_begin_on_watch", True)):
+        try:
+            bridge.start()
+        except Exception as exc:
+            logging.warning("auto_begin_on_watch failed: %s", exc)
     try:
         bridge.run_loop()
     except KeyboardInterrupt:

@@ -8,6 +8,7 @@ Stable GUI patch release for DouBao Voice Bridge.
 - Added near-tail context append recovery in addition to tail-anchor detection.
 - Added a GUI action to clear document body blocks while keeping the Feishu/Lark page title.
 - The GUI now starts the bridge process automatically by default.
+- The bridge now captures the startup baseline automatically, so opening the GUI no longer requires pressing `F8` once.
 - Closing the GUI now cleans up the bridge background process tree.
 - A local lark-cli login in the `needs_refresh` state is now accepted instead of being treated as logged out.
 - Replaced the app icon with a high-resolution Clash-style blue `D` icon.

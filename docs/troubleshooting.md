@@ -35,8 +35,8 @@ Check:
 
 - The cursor is inside a normal text input field.
 - The target app accepts paste/input events.
-- You pressed `F8` after putting the cursor in the target.
-- The Feishu/Lark document text was appended after `F8`.
+- The app captured the startup baseline, or you pressed `F8` after putting the cursor in the target.
+- The Feishu/Lark document text was appended after startup or after the latest `F8`.
 - The foreground window has not changed from the captured target.
 
 For apps such as VS Code, terminals, browsers, and Electron apps, focus behavior can vary. Start with Notepad to verify the paste path.
