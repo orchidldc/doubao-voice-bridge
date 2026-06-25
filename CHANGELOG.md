@@ -4,7 +4,13 @@
 
 - Added tail-anchor append detection for multi-account Feishu/Lark collaborative editing.
 - Fixed false "non-append edit" resets when Feishu/Lark `raw_content` slightly rewrites earlier paragraph text but the old document tail still matches.
-- Kept strict fallback behavior for real middle edits, deletions, or unmatched tails.
+- Added near-tail context append recovery for older iPhone / iOS editing cases where the old document tail is lightly rewritten.
+- Added GUI "clear document body" action while preserving the Feishu/Lark page title.
+- Made GUI bridge listening start automatically by default.
+- Made GUI shutdown clean up the bridge background process tree.
+- Replaced the app icon with a high-resolution Clash-style blue `D` icon.
+- Added reviewable source code, build script, PyInstaller spec, requirements, and icon assets to the public repository.
+- Kept strict fallback behavior for real middle edits, deletions, or unmatched context.
 
 ## v0.2.0 - 2026-06-24
 

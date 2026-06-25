@@ -55,8 +55,18 @@ If you want looser matching, adjust:
 
 Use `any` only if you accept the risk of pasting into the wrong foreground window.
 
-## Another Feishu/Lark Account Causes "Non-Append Edit" Warnings
+## iPhone Or Another Client Causes "Non-Append Edit" Warnings
 
-Upgrade to `v0.2.1` or later. This version adds tail-anchor append detection for collaborative editing. It handles the case where Feishu/Lark slightly rewrites earlier `raw_content`, but the old document tail still matches and the new text appears after that tail.
+Upgrade to the current `v0.2.1` release. It handles several Feishu/Lark `raw_content` rewrite cases:
+
+- trailing whitespace shifts,
+- old document tail still matching after earlier text changes,
+- older iPhone / iOS clients lightly rewriting the near-tail paragraph while appending text.
 
 If the warning still appears, reset the baseline with `F10`, then press `F8` again after placing the cursor in the target input field.
+
+## Background Bridge Process Still Running
+
+The current GUI stops the bridge process tree when you close the window and also cleans up known bridge process names on startup.
+
+If an older build left an elevated background process behind, launch the current `DouBaoVoiceBridge.exe` once as administrator, then close it normally.

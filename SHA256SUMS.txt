@@ -1,2 +1,2 @@
-8a1aab0148040b15eb5cf04f35374b08b028f6defcef4547f792fdbc673993c1  DouBaoVoiceBridge-v0.2.1-windows-x64.zip
-c731abdbac747dd3f7f01824404ca4592536f2d569e2f7062567dbc18a232425  DouBaoVoiceBridge.exe
+7b90e214485ed3cdc7ec2d395233124c37d3f54afa2d8a767ecc31e8df4e654b  DouBaoVoiceBridge-v0.2.1-windows-x64.zip
+5e9d0ce426cb972ab42d859939b14a94f2d91afde27686a2bb86f3b88c8b306b  DouBaoVoiceBridge.exe

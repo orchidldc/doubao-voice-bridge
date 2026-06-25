@@ -1,26 +1,25 @@
 # Private local configuration
 config.json
+doubao_voice_bridge_config.json
 .env
 .env.*
 !/.env.example
 
-# Runtime and debug output
-*.log
+# Python/runtime output
+__pycache__/
+*.py[cod]
 logs/
+*.log
 tmp/
 temp/
+.venv/
+venv/
 
-# Build/source artifacts intentionally excluded from this public docs repo
-src/
-work/
+# Build artifacts
 build/
 dist/
-__pycache__/
-*.py
-*.pyc
-*.spec
-
-# Release archives are uploaded to GitHub Releases, not committed here
+outputs/
+release_artifacts/
 *.exe
 *.zip
 *.7z
@@ -31,4 +30,3 @@ Thumbs.db
 .DS_Store
 .vscode/
 .idea/
-

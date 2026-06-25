@@ -4,7 +4,7 @@
 
 A Windows GUI bridge for DouBao-style cross-screen voice input. Speak on your phone, write recognized text into a Feishu/Lark Docx document, and paste newly appended text into the current Windows input target.
 
-This public repository is for documentation and binary distribution. It intentionally does not include source code, private config, logs, screenshots, real document links, or account secrets.
+This public repository includes reviewable source code, build scripts, documentation, and binary releases. It intentionally does not include private config, logs, screenshots, real document links, or account secrets.
 
 ## Download
 
@@ -39,12 +39,13 @@ Since `v0.2.0`, the main program is a GUI app:
 - check Feishu/Lark connection,
 - read once,
 - test paste,
+- clear document body while keeping the Feishu/Lark page title,
 - start listening,
 - stop listening,
 - open config,
 - open logs.
 
-The underlying bridge CLI is embedded in the GUI binary resources, so users do not need to manage multiple executables.
+The underlying bridge CLI is embedded in the GUI binary resources, so users do not need to manage multiple executables. The current GUI starts the bridge process automatically on launch and cleans up its background bridge process tree when the GUI closes.
 
 ## Quick Start
 
@@ -60,7 +61,7 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 
 5. Click "Save config".
 6. Click "Check connection".
-7. Click "Start listening".
+7. Listening starts automatically by default. If you stopped it manually, click "Start listening".
 8. Put the cursor in the target input field.
 9. Press `F8` to capture the baseline.
 10. Continue writing into the Feishu/Lark document from your phone.
@@ -72,11 +73,30 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 - `F10`: reset baseline
 - `F12`: exit the bridge process
 
-## Multi-Account Editing Compatibility
+## iOS / Multi-Device Editing Compatibility
 
-When another Feishu/Lark account edits the same document, `raw_content` may slightly rewrite earlier paragraph text. Since `v0.2.1`, the bridge can recover append-only changes with a tail-anchor check: if the old tail still matches in the new document and the new text appears after that tail, the app treats it as appended input.
+On some mobile clients, especially older iPhones or cross-device editing sessions, Feishu/Lark `raw_content` may lightly rewrite the document tail or earlier paragraph text. `v0.2.1` adds three append-recovery layers:
 
-Real middle-of-document edits, deletions, or unmatched tails still reset the baseline instead of pasting guessed text.
+- trailing-whitespace tolerance,
+- tail-anchor append recovery,
+- near-tail context append recovery.
+
+Real middle-of-document edits, deletions, or unmatched context still reset the baseline instead of pasting guessed text.
+
+## Build From Source
+
+On Windows:
+
+```powershell
+python -m pip install -r requirements.txt
+.\build_gui.bat
+```
+
+The GUI binary is generated at:
+
+```text
+dist\DouBaoVoiceBridge.exe
+```
 
 ## Safety
 

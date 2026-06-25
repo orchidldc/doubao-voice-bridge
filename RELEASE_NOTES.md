@@ -1,16 +1,20 @@
 # Release Notes - v0.2.1
 
-Patch release for multi-account Feishu/Lark collaborative editing.
+Stable GUI patch release for DouBao Voice Bridge.
 
 ## Highlights
 
-- Added tail-anchor append detection.
-- When another account edits the same document and Feishu/Lark rewrites earlier `raw_content`, the bridge can still paste text appended after the old document tail.
-- Real middle edits, deletions, or unmatched tails still reset the baseline instead of pasting guessed text.
+- Improved iOS and multi-device append detection when Feishu/Lark `raw_content` lightly rewrites the document tail.
+- Added near-tail context append recovery in addition to tail-anchor detection.
+- Added a GUI action to clear document body blocks while keeping the Feishu/Lark page title.
+- The GUI now starts the bridge process automatically by default.
+- Closing the GUI now cleans up the bridge background process tree.
+- Replaced the app icon with a high-resolution Clash-style blue `D` icon.
+- Published reviewable source code and build scripts in the repository.
 
 ## Upgrade Notes
 
-If you use a second phone or another Feishu/Lark account to edit the same bridge document, upgrade to this version.
+Upgrade to this version if you use an iPhone, multiple mobile devices, or multiple Feishu/Lark sessions to edit the same bridge document.
 
 Never upload your real config file to GitHub.
 

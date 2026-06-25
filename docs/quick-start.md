@@ -35,9 +35,15 @@ DouBaoVoiceBridge.exe
 
 ## 4. Use
 
-- Click "Start listening".
+- Listening starts automatically by default. If you stopped it manually, click "Start listening".
 - Put the cursor in the target input field.
 - Press `F8` to capture the baseline.
 - Continue writing into the configured Feishu/Lark document from your phone.
 - New appended text will be pasted into the target input field.
 - Press `F9` to pause, `F10` to reset, `F12` to exit.
+
+## 5. Optional Cleanup
+
+The GUI includes a "clear document body" action. It removes body blocks from the configured Feishu/Lark Docx document and keeps the page title.
+
+Use it only after confirming the configured document is the dedicated bridge document.

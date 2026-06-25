@@ -18,6 +18,7 @@
   "require_same_focused_control": false,
   "allow_refocus_target_window": false,
   "log_level": "INFO",
+  "auto_start_watch": true,
   "hotkeys": {
     "start": "F8",
     "stop": "F9",
