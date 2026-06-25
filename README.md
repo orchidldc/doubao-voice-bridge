@@ -15,7 +15,7 @@
 当前发布包名：
 
 ```text
-DouBaoVoiceBridge-v0.2.0-windows-x64.zip
+DouBaoVoiceBridge-v0.2.1-windows-x64.zip
 ```
 
 发布包中包含：
@@ -58,7 +58,7 @@ DouBaoVoiceBridge-v0.2.0-windows-x64.zip
 
 ## 快速开始
 
-1. 解压 `DouBaoVoiceBridge-v0.2.0-windows-x64.zip`。
+1. 解压 `DouBaoVoiceBridge-v0.2.1-windows-x64.zip`。
 2. 双击 `DouBaoVoiceBridge.exe`。
 3. 填写你的飞书 Docx 链接。
 4. 确认本机 `lark-cli` 已登录：
@@ -87,6 +87,12 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 默认启用智能开头空行处理。若两段语音输入间隔超过阈值，工具会去掉飞书段落带来的片段开头换行，避免每次粘贴都先出现一个空行。短时间连续输入仍会保留换行。
 
 界面中的“开头换行阈值秒”默认是 `2.0`。
+
+## 多账号协同编辑兼容
+
+如果你用另一个飞书账号在手机端编辑同一份文档，飞书 `raw_content` 有时会让前面段落返回文本轻微重排。`v0.2.1` 增加了“尾部锚点追加”检测：严格前缀追加失败时，只要旧正文结尾还能在新正文里匹配，并且新内容出现在旧结尾之后，就继续按追加粘贴。
+
+这不会把文档中间任意新增内容都当作输入；真正删除内容、改中间段落或旧结尾对不上的情况，仍会重设 baseline。
 
 ## 目标窗口模式
 
@@ -121,4 +127,3 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 ## 权利声明
 
 本仓库不授予应用源码或编译程序的开源许可证。详见 [NOTICE](NOTICE)。
-

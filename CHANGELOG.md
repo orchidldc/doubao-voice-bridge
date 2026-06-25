@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.1 - 2026-06-25
+
+- Added tail-anchor append detection for multi-account Feishu/Lark collaborative editing.
+- Fixed false "non-append edit" resets when Feishu/Lark `raw_content` slightly rewrites earlier paragraph text but the old document tail still matches.
+- Kept strict fallback behavior for real middle edits, deletions, or unmatched tails.
+
 ## v0.2.0 - 2026-06-24
 
 - Renamed the public product to DouBao Voice Bridge.

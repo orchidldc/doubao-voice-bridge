@@ -15,7 +15,7 @@ Download the Windows x64 release from GitHub Releases:
 Current package:
 
 ```text
-DouBaoVoiceBridge-v0.2.0-windows-x64.zip
+DouBaoVoiceBridge-v0.2.1-windows-x64.zip
 ```
 
 ## What It Does
@@ -48,7 +48,7 @@ The underlying bridge CLI is embedded in the GUI binary resources, so users do n
 
 ## Quick Start
 
-1. Extract `DouBaoVoiceBridge-v0.2.0-windows-x64.zip`.
+1. Extract `DouBaoVoiceBridge-v0.2.1-windows-x64.zip`.
 2. Double-click `DouBaoVoiceBridge.exe`.
 3. Fill in your Feishu/Lark Docx URL.
 4. Make sure `lark-cli` is logged in:
@@ -72,6 +72,12 @@ lark-cli auth login --scope "docx:document:readonly offline_access"
 - `F10`: reset baseline
 - `F12`: exit the bridge process
 
+## Multi-Account Editing Compatibility
+
+When another Feishu/Lark account edits the same document, `raw_content` may slightly rewrite earlier paragraph text. Since `v0.2.1`, the bridge can recover append-only changes with a tail-anchor check: if the old tail still matches in the new document and the new text appears after that tail, the app treats it as appended input.
+
+Real middle-of-document edits, deletions, or unmatched tails still reset the baseline instead of pasting guessed text.
+
 ## Safety
 
 Do not use this tool in password fields, browser address bars, payment forms, admin consoles, or sensitive input targets.
@@ -81,4 +87,3 @@ Do not publish your real config file, Feishu/Lark document URL, tokens, App Secr
 ## License / Rights
 
 No open-source license is granted for the application source code or compiled application through this repository. See [NOTICE](NOTICE).
-

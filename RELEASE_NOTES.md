@@ -1,19 +1,16 @@
-# Release Notes - v0.2.0
+# Release Notes - v0.2.1
 
-DouBao Voice Bridge now ships as a focused Windows GUI app.
+Patch release for multi-account Feishu/Lark collaborative editing.
 
 ## Highlights
 
-- Public product name changed to DouBao Voice Bridge.
-- New GUI for config, connection checks, single read, paste test, and start/stop listening.
-- Only one user-facing executable in the release package: `DouBaoVoiceBridge.exe`.
-- Embedded bridge CLI resource, so users do not need to manage multiple exe files.
-- Smart leading-newline handling reduces unwanted blank lines before pasted voice fragments.
-- Default README is Chinese, with an English README button.
+- Added tail-anchor append detection.
+- When another account edits the same document and Feishu/Lark rewrites earlier `raw_content`, the bridge can still paste text appended after the old document tail.
+- Real middle edits, deletions, or unmatched tails still reset the baseline instead of pasting guessed text.
 
 ## Upgrade Notes
 
-If you used `v0.1.0`, switch to the new GUI executable and keep your private config out of GitHub.
+If you use a second phone or another Feishu/Lark account to edit the same bridge document, upgrade to this version.
 
 Never upload your real config file to GitHub.
 

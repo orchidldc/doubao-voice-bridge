@@ -54,3 +54,9 @@ If you want looser matching, adjust:
 ```
 
 Use `any` only if you accept the risk of pasting into the wrong foreground window.
+
+## Another Feishu/Lark Account Causes "Non-Append Edit" Warnings
+
+Upgrade to `v0.2.1` or later. This version adds tail-anchor append detection for collaborative editing. It handles the case where Feishu/Lark slightly rewrites earlier `raw_content`, but the old document tail still matches and the new text appears after that tail.
+
+If the warning still appears, reset the baseline with `F10`, then press `F8` again after placing the cursor in the target input field.
