@@ -5,6 +5,7 @@
 - Added tail-anchor append detection for multi-account Feishu/Lark collaborative editing.
 - Fixed false "non-append edit" resets when Feishu/Lark `raw_content` slightly rewrites earlier paragraph text but the old document tail still matches.
 - Added near-tail context append recovery for older iPhone / iOS editing cases where the old document tail is lightly rewritten.
+- Accepted the `needs_refresh` lark-cli user-auth state so a refreshable local login no longer makes the GUI bridge exit immediately.
 - Added GUI "clear document body" action while preserving the Feishu/Lark page title.
 - Made GUI bridge listening start automatically by default.
 - Made GUI shutdown clean up the bridge background process tree.

@@ -394,7 +394,8 @@ def check_lark_cli_ready(config: dict[str, Any]) -> list[str]:
         return reasons
 
     user = (status.get("identities") or {}).get("user") if isinstance(status.get("identities"), dict) else None
-    if not isinstance(user, dict) or not user.get("available") or user.get("status") != "ready":
+    user_status = user.get("status") if isinstance(user, dict) else None
+    if not isinstance(user, dict) or not user.get("available") or user_status not in {"ready", "needs_refresh"}:
         reasons.append(f'lark-cli 用户身份未登录。请运行：lark-cli auth login --scope "{FEISHU_DOCX_READ_SCOPE} offline_access"')
         return reasons
 

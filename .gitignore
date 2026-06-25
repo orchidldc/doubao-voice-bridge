@@ -18,6 +18,8 @@ venv/
 # Build artifacts
 build/
 dist/
+doubao_voice_bridge_cli.spec
+tools/
 outputs/
 release_artifacts/
 *.exe
