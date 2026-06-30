@@ -57,7 +57,7 @@ Use `any` only if you accept the risk of pasting into the wrong foreground windo
 
 ## iPhone Or Another Client Causes "Non-Append Edit" Warnings
 
-Upgrade to the current `v0.2.1` release. It handles several Feishu/Lark `raw_content` rewrite cases:
+Upgrade to `v0.3.1` or later. It handles several Feishu/Lark `raw_content` rewrite cases:
 
 - trailing whitespace shifts,
 - old document tail still matching after earlier text changes,

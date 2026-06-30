@@ -15,7 +15,7 @@ Download the Windows x64 release from GitHub Releases:
 Current package:
 
 ```text
-DouBaoVoiceBridge-v0.2.1-windows-x64.zip
+DouBaoVoiceBridge-v0.3.1-windows-x64.zip
 ```
 
 ## What It Does
@@ -49,7 +49,7 @@ The underlying bridge CLI is embedded in the GUI binary resources, so users do n
 
 ## Quick Start
 
-1. Extract `DouBaoVoiceBridge-v0.2.1-windows-x64.zip`.
+1. Extract `DouBaoVoiceBridge-v0.3.1-windows-x64.zip`.
 2. Double-click `DouBaoVoiceBridge.exe`.
 3. Fill in your Feishu/Lark Docx URL.
 4. Make sure `lark-cli` is logged in:
@@ -96,6 +96,38 @@ The GUI binary is generated at:
 
 ```text
 dist\DouBaoVoiceBridge.exe
+```
+
+## Image Bridge
+
+The image bridge is opt-in. When enabled, the tool detects newly inserted images from `lark-cli docs +fetch`, downloads them to a local temporary directory, and writes image data to the Windows clipboard.
+
+Default image settings:
+
+```json
+{
+  "enable_image_bridge": false,
+  "image": {
+    "enabled": false,
+    "insert_mode": "clipboard_bitmap",
+    "allow_file_drop_fallback": false
+  }
+}
+```
+
+`clipboard_bitmap` is the default mode for web AI input boxes, Word, chat boxes, and editors that support normal image paste. It writes CF_DIB/Bitmap data only and does not put the image path or `xxx.jpg` filename into the text clipboard.
+
+`clipboard_file` is explicit file mode. Use it only when you manually set `image.insert_mode` to `clipboard_file`. It writes a FileDropList for applications that support file paste/upload, but some input boxes interpret that as a filename, so it is not the default.
+
+`auto` is also bitmap-first. It does not fall back to FileDropList unless `allow_file_drop_fallback` is set to `true`.
+
+If a target application cannot accept clipboard images, the tool will not paste the filename as a workaround. Use manual upload or explicit `clipboard_file` mode instead. For diagnostics:
+
+```powershell
+DouBaoVoiceBridge.exe --config config.json --debug-image-pipeline
+DouBaoVoiceBridge.exe --inspect-clipboard
+DouBaoVoiceBridge.exe --test-image-output --file C:\path\to\image.jpg --mode clipboard_bitmap
+DouBaoVoiceBridge.exe --test-image-output --file C:\path\to\image.jpg --mode clipboard_file
 ```
 
 ## Safety

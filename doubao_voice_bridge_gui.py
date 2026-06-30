@@ -24,7 +24,7 @@ import tkinter as tk
 
 
 APP_NAME = "DouBao Voice Bridge"
-APP_VERSION = "0.2.1"
+APP_VERSION = "0.3.1"
 CREATE_NO_WINDOW = 0x08000000
 APP_ICON_RELATIVE_PATH = "assets/doubao_d.ico"
 BRIDGE_PROCESS_IMAGES = ("doubao_voice_bridge_cli.exe", "feishu_voice_bridge.exe")
@@ -109,6 +109,7 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
         self.leading_newline_threshold_var = StringVar(value="2.0")
         self.marker_var = StringVar(value="")
         self.auto_start_var = BooleanVar(value=True)
+        self.image_bridge_var = BooleanVar(value=False)
 
         self.output_text: tk.Text | None = None
         self.start_button: ttk.Button | None = None
@@ -177,6 +178,9 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
         ).grid(row=4, column=2, columnspan=4, sticky=W, padx=(20, 0), pady=7)
         ttk.Checkbutton(config, text="打开软件后自动启动桥接监听", variable=self.auto_start_var).grid(
             row=5, column=0, columnspan=3, sticky=W, pady=(8, 0)
+        )
+        ttk.Checkbutton(config, text="启用图片跨屏插入", variable=self.image_bridge_var).grid(
+            row=5, column=3, columnspan=3, sticky=W, pady=(8, 0)
         )
         ttk.Label(
             config,
@@ -264,6 +268,21 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
             "monitor_after_marker": "",
             "insert_mode": "clipboard",
             "restore_clipboard": True,
+            "enable_image_bridge": False,
+            "image": {
+                "enabled": False,
+                "detect_route": "cli",
+                "insert_mode": "clipboard_bitmap",
+                "allow_file_drop_fallback": False,
+                "stable_delay_ms": 1500,
+                "download_retry_count": 3,
+                "download_retry_interval_ms": 800,
+                "temp_dir": "./data/images",
+                "keep_downloaded_images_hours": 24,
+                "max_image_size_mb": 30,
+                "restore_clipboard": True,
+                "restore_clipboard_delay_ms": 1500,
+            },
             "target_window_mode": "any",
             "require_same_foreground_window": False,
             "require_same_focused_control": False,
@@ -309,6 +328,11 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
         self.leading_newline_threshold_var.set(str(config.get("leading_newline_idle_threshold_seconds", 2.0)))
         self.marker_var.set(str(config.get("monitor_after_marker", "")))
         self.auto_start_var.set(bool(config.get("auto_start_watch", True)))
+        image_config = config.get("image", {})
+        image_enabled = bool(config.get("enable_image_bridge", False))
+        if isinstance(image_config, dict):
+            image_enabled = image_enabled or bool(image_config.get("enabled", False))
+        self.image_bridge_var.set(image_enabled)
 
     def _config_from_ui(self) -> dict[str, object]:
         config = self._default_config()
@@ -322,6 +346,14 @@ class DouBaoVoiceBridgeApp(ttk.Frame):
         config["leading_newline_policy"] = "smart"
         config["auto_start_watch"] = bool(self.auto_start_var.get())
         config["auto_begin_on_watch"] = True
+        image_enabled = bool(self.image_bridge_var.get())
+        image_config = dict(config.get("image", {}) if isinstance(config.get("image"), dict) else {})
+        image_config["enabled"] = image_enabled
+        image_config.setdefault("detect_route", "cli")
+        image_config.setdefault("insert_mode", "clipboard_bitmap")
+        image_config.setdefault("allow_file_drop_fallback", False)
+        config["enable_image_bridge"] = image_enabled
+        config["image"] = image_config
 
         try:
             config["poll_interval_seconds"] = max(0.2, float(self.poll_interval_var.get()))

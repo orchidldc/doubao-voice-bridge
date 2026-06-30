@@ -15,18 +15,21 @@
 当前发布包名：
 
 ```text
-DouBaoVoiceBridge-v0.2.1-windows-x64.zip
+DouBaoVoiceBridge-v0.3.1-windows-x64.zip
 ```
 
 发布包中包含：
 
 - `DouBaoVoiceBridge.exe`
 - `config.example.json`
-- `README-USER.md`
-- `RELEASE_NOTES.txt`
+- `README.md`
+- `README.en.md`
+- `RELEASE_NOTES.md`
 - `THIRD_PARTY_NOTICES.txt`
-- `DISCLAIMER.txt`
-- `NOTICE.txt`
+- `DISCLAIMER.md`
+- `NOTICE`
+- `PRIVACY.md`
+- `SECURITY.md`
 
 ## 它解决什么问题
 
@@ -59,7 +62,7 @@ DouBaoVoiceBridge-v0.2.1-windows-x64.zip
 
 ## 快速开始
 
-1. 解压 `DouBaoVoiceBridge-v0.2.1-windows-x64.zip`。
+1. 解压 `DouBaoVoiceBridge-v0.3.1-windows-x64.zip`。
 2. 双击 `DouBaoVoiceBridge.exe`。
 3. 填写你的飞书 Docx 链接。
 4. 确认本机 `lark-cli` 已登录：
@@ -123,6 +126,45 @@ dist\DouBaoVoiceBridge.exe
 - `locked`: 只粘贴到按 `F8` 时捕获的同一窗口。
 - `process`: 允许同一进程的其他窗口。
 - `any`: 粘贴到当前前台窗口，最顺手，误粘风险也最高。
+
+## 图片跨屏插入
+
+图片功能默认不强制开启；开启后，工具会从飞书 CLI 的 `docs +fetch` 输出中识别新增图片，并把图片下载到本机临时目录后写入 Windows 剪贴板。
+
+默认图片配置如下：
+
+```json
+{
+  "enable_image_bridge": false,
+  "image": {
+    "enabled": false,
+    "insert_mode": "clipboard_bitmap",
+    "allow_file_drop_fallback": false
+  }
+}
+```
+
+`clipboard_bitmap` 是默认模式，适合网页 AI 输入框、Word、聊天框和大多数支持图片粘贴的编辑器。该模式只写入 CF_DIB/Bitmap 图片数据，不把图片路径或 `xxx.jpg` 文件名写入普通文本剪贴板。
+
+`clipboard_file` 是显式文件模式，只在你手动把 `image.insert_mode` 改成 `clipboard_file` 时使用。它会写入 FileDropList，适合支持文件粘贴或上传的应用；但有些输入框会把 FileDropList 解释成文件名文本，所以不作为默认模式。
+
+`auto` 也是 bitmap-first：先尝试 `clipboard_bitmap`，默认不会自动退回到 FileDropList。只有同时设置 `"allow_file_drop_fallback": true` 时，才允许在 bitmap 写入失败后退回文件模式。
+
+如果目标应用不支持剪贴板图片粘贴，工具不会把文件名硬粘进去；你可以改用 `clipboard_file` 模式或手动上传图片。正常情况下不应该把 `xxx.jpg` 粘贴到输入框。如果出现这种现象，请运行：
+
+```powershell
+DouBaoVoiceBridge.exe --config config.json --debug-image-pipeline
+DouBaoVoiceBridge.exe --inspect-clipboard
+DouBaoVoiceBridge.exe --test-image-output --file C:\path\to\image.jpg --mode clipboard_bitmap
+```
+
+显式测试文件模式：
+
+```powershell
+DouBaoVoiceBridge.exe --test-image-output --file C:\path\to\image.jpg --mode clipboard_file
+```
+
+如果 file 模式在目标应用里只粘出文件名，说明该目标应用不适合 file 模式。
 
 ## 隐私和安全
 

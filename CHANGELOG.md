@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.1 - 2026-06-30
+
+- Added Feishu/Lark document image bridge support for cross-screen image insertion.
+- Downloaded newly inserted document images through `lark-cli` and pasted them as Windows CF_DIB/Bitmap clipboard data.
+- Prevented image filenames such as `xxx.jpg` or `xxx.jpeg` from being treated as text deltas.
+- Added bitmap-first image paste behavior and disabled FileDrop fallback by default.
+- Added an image bridge toggle to the GUI configuration flow.
+- Added diagnostic commands for image pipeline and clipboard format inspection.
+- Kept explicit `clipboard_file` mode for applications that support file paste/upload.
+
 ## v0.2.1 - 2026-06-25
 
 - Added tail-anchor append detection for multi-account Feishu/Lark collaborative editing.
